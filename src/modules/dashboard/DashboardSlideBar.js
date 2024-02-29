@@ -1,22 +1,27 @@
 import React from "react";
 import { IconDashboard } from "../../components/icons";
+import { NavLink } from "react-router-dom";
 
 const slideBarLinks = [
   {
     icon: <IconDashboard></IconDashboard>,
     title: "Dashboard",
-    url: "/",
+    url: "/dashboard",
   },
 ];
 
 const DashboardSlideBar = () => {
   return (
-    <div>
+    <div className="w-full md:w-[76px] rounded-3xl bg-white shadow-[10px_10px_20px_rgba(218_213_213_0.5)]">
       {slideBarLinks.map((link) => (
-        <div>
-          {link.icon}
-          {link.title}
-        </div>
+        <NavLink
+          to={link.url}
+          key={link.title}
+          className="flex items-center gap-x-5"
+        >
+          <span>{link.icon}</span>
+          <span className="md:hidden">{link.title}</span>
+        </NavLink>
       ))}
     </div>
   );
